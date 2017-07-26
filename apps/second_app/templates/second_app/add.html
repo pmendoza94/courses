@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>Add Friends</title>
+	</head>
+	<body>
+		<header>
+			<h1>Pick A Friend to Add</h1>
+		</header>
+		<form action="/addfriend" method="post">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Status</th>
+				<th>Time</th>
+			</tr>
+			{%for user in users %}
+				<tr>
+					<td>{{user.first_name}}{{user.last_name}}</td>
+					<td><input type="hidden" name="first_name" value="{{user.first_name}}"></td>
+					<td><input type="hidden" name="last_name" value="{{user.last_name}}"></td>
+					<td><input type="submit" value="Add as Friend"></td>
+				</tr>
+			{%endfor%}
+		</table>
+		</form>
+	</body>
+</html>

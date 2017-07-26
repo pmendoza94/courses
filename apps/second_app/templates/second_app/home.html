@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Homepage</title>
+	</head>
+	<body>
+		<header>
+			<h1>Welcome, {{request.session.first_name}}</h1>
+			<table style="float: right;">
+				<tbody>
+					<td><a href="{%url 'user:logout'%}">Logout</a></td>
+				</tbody>
+			</table>
+		</header>
+		<br><br><br>
+		<table>
+			<tbody>
+				<td><a href="/show">View Friends</a></td>
+				<td><a href="/addpage">Add Friends</a></td>
+			</tbody>
+		</table>
+		<h2>Recent Friends</h2>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Status</th>
+					<th>Time</th>
+				</tr>
+				{%for user in users %}
+					<tr>
+						<td>{{user.first_name}}</td>
+						<td>Added</td>
+						<td>{{user.created_at}}</td>
+					</tr>
+				{%endfor%}
+			</table>
+	</body>
+</html>
